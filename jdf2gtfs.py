@@ -1763,7 +1763,7 @@ def main():
         out.writerow(list(data._metadata._keymap.keys()))
         for item in data:
             out.writerow((list(item._row)))
-    data = dbsession.execute("SELECT id_linka as route_id, id_kalendar as service_id, jdf_spoje.id as trip_id FROM jdf_spoje JOIN jdf_linky ON jdf_spoje.id_linka = jdf_linky.id WHERE aktualni=TRUE")
+    data = dbsession.execute("SELECT id_linka as route_id, id_kalendar as service_id, jdf_spoje.id as trip_id, jdf_spoje.cislo_spoj as trip_short_name FROM jdf_spoje JOIN jdf_linky ON jdf_spoje.id_linka = jdf_linky.id WHERE aktualni=TRUE")
     with open(os.path.join(args.out_dir,'trips.txt'), 'w', encoding='utf8') as f:
         out = csv.writer(f, lineterminator='\n')
         out.writerow(list(data._metadata._keymap.keys()))
